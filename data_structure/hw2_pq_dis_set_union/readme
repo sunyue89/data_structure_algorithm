@@ -1,0 +1,3 @@
+All files are correct solutions to the homework problem
+The only possible improvement is on the rank heuristic based merge, which needs additional field in the base set datastucture
+But it worked to pass the time limit
