@@ -5,28 +5,25 @@ using std::vector;
 using std::pair;
 
 
-void reach_rec(vector<vector<int>> adj, int x, int y,vector<bool> &vis, bool &con){
+int reach_rec(vector<vector<int>> adj, int x, int y,vector<bool> &vis){
 
   //std::cout<<x+1<<" "<<y+1<<std::endl;
   if(x!=y){ 
     vis[x] = true;
     for (size_t i=0;i<adj[x].size();++i){
       if(!vis[adj[x][i]])
-	reach_rec(adj,adj[x][i],y,vis,con);	
+	if(reach_rec(adj,adj[x][i],y,vis)) return true;	
     }
   }else{
-    con = 1;
-    return;
+    return true;
   }
+  return false;
 }
 
 int reach(vector<vector<int> > &adj, int x, int y) {
   //write your code here
   vector<bool> visited(adj.size());
-  std::cout<<std::endl;
-  bool flag = false;
-  reach_rec(adj,x,y,visited,flag);
-  return flag;
+  return reach_rec(adj,x,y,visited);
 }
 
 int main() {
