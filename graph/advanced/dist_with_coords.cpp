@@ -35,13 +35,13 @@ public:
 
     // See the description of this method in the starter for friend_suggestion
     void clear() {
-        for (int i = 0; i < workset_.size(); ++i) {
-            int v = workset_[i];
-            distance_[0][v] = distance_[1][v] = INF;
-            visited_[v] = false;
-						vis_[0][v]=vis_[1][v]=false;
-        }
-        workset_.clear();
+			for (int i = 0; i < workset_.size(); ++i) {
+					int v = workset_[i];
+					distance_[0][v] = distance_[1][v] = INF;
+					visited_[v] = false;
+					vis_[0][v]=vis_[1][v]=false;
+			}
+			workset_.clear();
     }
 
 		Len heu_f(int s, int t, int u){
@@ -82,7 +82,6 @@ public:
 					}
 					++i;
 				}
-
     }
 
     // Returns the distance from s to t in the graph
@@ -113,22 +112,18 @@ public:
 				pair<Len,int> nf,nb; 
 
 				while(!q[0].empty()||!q[1].empty()){
-
 					//debug
 					//cout<<nf.second+1<<" "<<nb.second+1<<endl;
-					
 					if(!q[0].empty()){
 						nf = q[0].top();
 						q[0].pop();
 						visit(q,0,nf.second,s,t,distance_[0][nf.second],btph);
 					}
-
 					if(!q[1].empty()){
 						nb = q[1].top();
 						q[1].pop();
 						visit(q,1,nb.second,s,t,distance_[1][nb.second],btph);
 					}
-
 					if(nf.first+nb.first >= btph){
 						#if 0
 						cout<<nf.first<<" "<<nb.first<<" "<<btph<<endl;
@@ -136,9 +131,7 @@ public:
 						#endif
 						return btph;
 					}
-
 				}
-
         return -1;
     }
 };
